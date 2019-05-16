@@ -1,5 +1,6 @@
 import React from 'react';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import logo from './logo.svg';
 
@@ -20,9 +21,9 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/PageGameSelect">Game Select</Nav.Link>
-            <Nav.Link href="/PageCharacterSelect">Character Select</Nav.Link>
+            <Link className="nav-link" to="/">Home</Link>
+            <Link className="nav-link" to="/PageGameSelect">Game Select</Link>
+            <Link className="nav-link" to="/PageCharacterSelect">Character Select</Link>
           </Nav>
         </Navbar.Collapse>        
       </Navbar>
