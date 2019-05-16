@@ -6,6 +6,7 @@ const PVC = () => {
     <section id="PVC">
       <Container>
         <Row>
+          <h1>PVC</h1>
           <Col>PVC</Col>
         </Row>
       </Container>

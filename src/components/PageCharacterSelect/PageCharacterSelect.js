@@ -8,6 +8,7 @@ const PageCharacterSelect = () => {
   return (
     <section>
       <Container>
+        <h1>Select Character</h1>
         <Row>
           <Col>
             <button>

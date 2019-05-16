@@ -6,6 +6,7 @@ const PageGameSelect = () => {
   return (
     <section id="PageGameSelect">
       <Container>
+        <h1>Select Game Mode</h1>
         <Row>
           <Col>
             <Link to="/PageCharacterSelect">Player vs. Computer</Link>
