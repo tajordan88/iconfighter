@@ -6,7 +6,7 @@ import './App.css';
 import Header from './components/Header/Header';
 import PageStart from './components/PageStart/PageStart';
 import PageGameSelect from './components/PageGameSelect/PageGameSelectContainer';
-import PageCharacterSelect from './components/PageCharacterSelect/PageCharacterSelect';
+import PageCharacterSelect from './components/PageCharacterSelect/PageCharacterSelectContainer';
 
 const App = () => {
   return (

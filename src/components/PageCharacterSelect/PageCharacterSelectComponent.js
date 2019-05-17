@@ -1,10 +1,11 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { GiRunningNinja, GiArcher, GiPikeman, GiRead } from 'react-icons/gi';
 
-const PageCharacterSelect = () => {
+const PageCharacterSelect = (props) => {
+  console.log(props);
   return (
     <section>
       <Container>
@@ -32,6 +33,11 @@ const PageCharacterSelect = () => {
           <Col>VS.</Col>
           <Col>
             Character2
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Link to={`/${props.gametype}`}>FIGHT!</Link>
           </Col>
         </Row>
       </Container>
