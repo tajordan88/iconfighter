@@ -5,7 +5,7 @@ import './App.css';
 
 import Header from './components/Header/Header';
 import PageStart from './components/PageStart/PageStart';
-import PageGameSelect from './components/PageGameSelect/PageGameSelect';
+import PageGameSelect from './components/PageGameSelect/PageGameSelect.container';
 import PageCharacterSelect from './components/PageCharacterSelect/PageCharacterSelect';
 
 const App = () => {
