@@ -6,7 +6,6 @@ import characters from '../../db/characters';
 
 class PageCharacterSelect extends Component {
   renderCharacterList() {
-    console.log(this.props);
     // const characterList = characters.map(character => (
     //   <button key={character.name} onClick={() => this.props.onCharacterSelect1Click(character.name)}>
     //     {character.name}
@@ -33,23 +32,22 @@ class PageCharacterSelect extends Component {
     return characterList;
   }
 
-  renderCharacter1() {
-    console.log(this.props.character1.name);
-    let character1 = (
+  renderCharacter(char, confirmClick) {
+    let character = (
       <div>
-        <h3>{this.props.character1.name}</h3>
-        <h2>{this.props.character1.icon}</h2>
+        <h3>{char.name}</h3>
+        <h2>{char.icon}</h2>
         <h6>
-          hp:{this.props.character1.hp} sp:{this.props.character1.sp}
+          hp:{char.hp} sp:{char.sp}
         </h6>
         <h6>
-          atk:{this.props.character1.atk} def:{this.props.character1.def}
+          atk:{char.atk} def:{char.def}
         </h6>
-        {(this.props.character1.selected) ? (
-          this.props.character1.confirmed ? (
+        {(char.selected) ? (
+          char.confirmed ? (
             <button disabled>Confirm</button>
           ) : (
-            <button onClick={() => this.props.onCharacterConfirm1Click(1)}>Confirm</button>
+            <button onClick={confirmClick}>Confirm</button>
           )
         ):
         (
@@ -58,40 +56,10 @@ class PageCharacterSelect extends Component {
         
       </div>
     );
-    return character1;
+    return character;
   }
 
-  renderCharacter2() {
-    console.log(this.props.character2);
-    let character2 = (
-      <div>
-        <h3>{this.props.character2.name}</h3>
-        <h2>{this.props.character2.icon}</h2>
-        <h6>
-          hp:{this.props.character2.hp} sp:{this.props.character2.sp}
-        </h6>
-        <h6>
-          atk:{this.props.character2.atk} def:{this.props.character2.def}
-        </h6>
-        {(this.props.character2.selected) ? (
-          this.props.character2.confirmed ? (
-            <button disabled>Confirm</button>
-          ) : (
-            <button onClick={() => this.props.onCharacterConfirm2Click(1)}>Confirm</button>
-          )
-        ):
-        (
-          ''
-        )}
-        
-      </div>
-    );
-    return character2;
-  } 
-
   render() {
-    console.log(this.props);
-    // console.log(characters);
     return (
       <section>
         <Container>
@@ -100,9 +68,9 @@ class PageCharacterSelect extends Component {
             <Col>{this.renderCharacterList()}</Col>
           </Row>
           <Row>
-            <Col>{this.renderCharacter1()}</Col>
+            <Col>{this.renderCharacter(this.props.character1, () => this.props.onCharacterConfirm1Click(1))}</Col>
             <Col>VS.</Col>
-            <Col>{this.renderCharacter2()}</Col>
+            <Col>{this.renderCharacter(this.props.character2, () => this.props.onCharacterConfirm2Click(1))}</Col>
           </Row>
           <Row>
             <Col>
