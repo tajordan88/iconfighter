@@ -1,4 +1,4 @@
-import { CHARACTER_SELECT_1 } from '../actions/types';
+import { CHARACTER_SELECT_1, CHARACTER_CONFIRM_1 } from '../actions/types';
 
 let initialState = {
   name: '',
@@ -12,6 +12,7 @@ let initialState = {
   chest: '',
   legs: '',
   feet: '',
+  selected: 0,
   confirmed: 0
 }
 
@@ -19,6 +20,11 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case CHARACTER_SELECT_1:
       return action.payload || false;
+    case CHARACTER_CONFIRM_1:
+      return {
+        ...state,
+        confirmed: 1
+      }
     default:
       return state;
   }

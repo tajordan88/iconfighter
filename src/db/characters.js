@@ -14,7 +14,8 @@ const characters = {
     head: '',
     chest: '',
     legs: '',
-    feet: ''
+    feet: '',
+    selected: 1
   },
   Archer: {
     name: 'Archer',
@@ -28,7 +29,8 @@ const characters = {
     head: '',
     chest: '',
     legs: '',
-    feet: ''
+    feet: '',
+    selected: 1
   },
   Pikeman: {
     name: 'Pikeman',
@@ -42,7 +44,8 @@ const characters = {
     head: '',
     chest: '',
     legs: '',
-    feet: ''
+    feet: '',
+    selected: 1
   },
   Mage: {
     name: 'Mage',
@@ -56,7 +59,8 @@ const characters = {
     head: '',
     chest: '',
     legs: '',
-    feet: ''
+    feet: '',
+    selected: 1
   }
 };
 
