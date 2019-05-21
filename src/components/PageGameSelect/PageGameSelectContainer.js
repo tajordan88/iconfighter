@@ -1,4 +1,3 @@
-
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { onGameTypeClick } from '../../actions/action_onGameTypeClick';
@@ -6,7 +5,6 @@ import { onGameTypeClick } from '../../actions/action_onGameTypeClick';
 import PageGameSelectComponent from './PageGameSelectComponent';
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     gametype: state.gametype
   };

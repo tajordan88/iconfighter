@@ -11,7 +11,8 @@ let initialState = {
   head: '',
   chest: '',
   legs: '',
-  feet: ''
+  feet: '',
+  confirmed: 0
 }
 
 export default function(state = initialState, action) {

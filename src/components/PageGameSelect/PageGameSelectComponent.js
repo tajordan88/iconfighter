@@ -3,7 +3,6 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const PageGameSelectComponent = ({ onGameTypeClick }) => {
-    console.log(onGameTypeClick);
     return (
       <section id="PageGameSelect">
         <Container>

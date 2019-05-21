@@ -1,8 +1,8 @@
 import React from 'react';
 import { GiRunningNinja, GiArcher, GiPikeman, GiRead } from 'react-icons/gi';
 
-const characters = [
-   {
+const characters = {
+   Ninja: {
     name: 'Ninja',
     icon: <GiRunningNinja />,
     hp: 100,
@@ -16,7 +16,7 @@ const characters = [
     legs: '',
     feet: ''
   },
-  {
+  Archer: {
     name: 'Archer',
     icon: <GiArcher />,
     hp: 100,
@@ -30,7 +30,7 @@ const characters = [
     legs: '',
     feet: ''
   },
-  {
+  Pikeman: {
     name: 'Pikeman',
     icon: <GiPikeman />,
     hp: 100,
@@ -44,7 +44,7 @@ const characters = [
     legs: '',
     feet: ''
   },
-  {
+  Mage: {
     name: 'Mage',
     icon: <GiRead />,
     hp: 100,
@@ -58,6 +58,6 @@ const characters = [
     legs: '',
     feet: ''
   }
-];
+};
 
 export default characters;

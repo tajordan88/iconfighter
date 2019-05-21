@@ -6,12 +6,22 @@ import characters from '../../db/characters';
 
 class PageCharacterSelect extends Component {
   renderCharacterList() {
-    const characterList = characters.map(character => (
-      <button key={character.name}>
-        {character.name}
-        {character.icon}
+    console.log(this.props);
+    // const characterList = characters.map(character => (
+    //   <button key={character.name} onClick={() => this.props.onCharacterSelect1Click(character.name)}>
+    //     {character.name}
+    //     {character.icon}
+    //   </button>
+    // ));
+    let characterList = [];
+    Object.keys(characters).forEach(character => {
+      let characteritem =  <button key={characters[character].name} onClick={() => this.props.onCharacterSelect1Click(characters[character].name)}>
+        {characters[character].name}
+        {characters[character].icon}
       </button>
-    ));
+      characterList.push(characteritem);
+    });
+
     return characterList;
   }
 
@@ -21,8 +31,7 @@ class PageCharacterSelect extends Component {
 
   render() {
     console.log(this.props);
-    console.log(this.state);
-    console.log(characters);
+    // console.log(characters);
     return (
       <section>
         <Container>
