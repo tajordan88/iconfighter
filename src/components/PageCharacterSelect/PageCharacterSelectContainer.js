@@ -8,7 +8,6 @@ import { onCharacterConfirm2Click } from '../../actions/action_onCharacterConfir
 import PageCharacterSelectComponent from './PageCharacterSelectComponent';
 
 const mapStateToProps = state => {
-  // console.log(state);
   return {
     gametype: state.gametype,
     character1: state.character1,

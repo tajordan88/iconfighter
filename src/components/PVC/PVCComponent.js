@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
-const PVC = () => {
+const PVC = (props) => {
+  console.log(props);
   return (
     <section id="PVC">
       <Container>

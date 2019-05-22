@@ -7,6 +7,7 @@ import Header from './components/Header/Header';
 import PageStart from './components/PageStart/PageStart';
 import PageGameSelect from './components/PageGameSelect/PageGameSelectContainer';
 import PageCharacterSelect from './components/PageCharacterSelect/PageCharacterSelectContainer';
+import PVC from './components/PVC/PVCContainer';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route exact path="/" component={PageStart} />
         <Route path="/PageGameSelect" component={PageGameSelect} />
         <Route path="/PageCharacterSelect" component={PageCharacterSelect} />
+        <Route path="/PVC" component={PVC} />
       </div>
     </Router>
   );
