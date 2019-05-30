@@ -26,10 +26,6 @@ class PVC extends Component {
     p2SP: this.props.character2.sp,    
   }
 
-  componentDidMount() {
-    
-  }
-
   onP1ConfirmClick = () => {
     this.setState({
       p1AttackConfirmed: true,
@@ -38,7 +34,10 @@ class PVC extends Component {
   }
 
   onP2ConfirmClick = () => {
-    this.setState({turn: 1});
+    this.setState({
+      p2AttackConfirmed: true,
+      attackConfirmed: true
+    });
   } 
 
   onP1AttackClick = () => {
@@ -68,20 +67,51 @@ class PVC extends Component {
     //
     let diceRoll = Math.floor(Math.random() * 6 + 1);
     console.log(diceRoll);
+    
     if (this.state.turn === 1) {
-      let dmg = this.state.p2HP - (this.props.character1.atk * diceRoll);
-      console.log(dmg);
-      this.setState({
-        p2HP: dmg
-      })
+      // Chance To Hit is determined by dice roll. Lower CTH = better hit chance. (1 is best)
+      if (diceRoll >= this.state.p1CTH) {
+        // Calculate how much damage to do.
+        let dmg = this.state.p2HP - (this.props.character1.atk);
+        // Set damage to do.
+        this.setState({
+          p2HP: dmg
+        })
+      } else {
+        alert("You Missed!");
+      }
+      this.setState({ 
+        turn: 2,
+        p2AttackConfirmed: false
+      });
     }
-    // this.setState({
-    //   attackConfirmed: false
-    // });
+
+    if (this.state.turn === 2) {
+      // Chance To Hit is determined by dice roll. Lower CTH = better hit chance. (1 is best)
+      if (diceRoll >= this.state.p2CTH) {
+        // Calculate how much damage to do.
+        let dmg = this.state.p1HP - (this.props.character2.atk);
+        // Set damage to do.
+        this.setState({
+          p1HP: dmg
+        })
+      } else {
+        alert("You Missed!");
+      }
+      this.setState({ 
+        turn: 1,
+        p1AttackConfirmed: false
+       });
+    }    
+
+
+    this.setState({
+      attackConfirmed: false
+    });
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     console.log(this.state);
     return (
       <section id="PVC">
@@ -89,17 +119,17 @@ class PVC extends Component {
           {/* PLAYER2 */}
           <Row className="mt-5">
             <Col>
-              <button disabled={this.state.turn === 1 ? true : false} onClick={this.onP2AttackClick}>ATTACK</button>
-              <button disabled={this.state.turn === 1 ? true : false}>SPECIAL1</button>
-              <button disabled={this.state.turn === 1 ? true : false}>SPECIAL2</button>
+              <button disabled={(this.state.turn === 1 || this.state.p2AttackConfirmed) ? true : false} onClick={this.onP2AttackClick}>ATTACK</button>
+              <button disabled={(this.state.turn === 1 || this.state.p2AttackConfirmed) ? true : false}>SPECIAL1</button>
+              <button disabled={(this.state.turn === 1 || this.state.p2AttackConfirmed) ? true : false}>SPECIAL2</button>
               <div className="mt-3">
-                <button disabled={(this.state.turn === 1 || !this.state.p2AttackSelected) ? true : false} onClick={this.onP2ConfirmClick}>CONFIRM</button>
+                <button disabled={(this.state.turn === 1 || !this.state.p2AttackSelected || this.state.p2AttackConfirmed) ? true : false} onClick={this.onP2ConfirmClick}>CONFIRM</button>
               </div>
             </Col>
             <Col>
               <Row className="mb-3">
-                <Col>HP: {this.props.character2.hp}</Col>
-                <Col>SP: {this.props.character2.sp}</Col>
+                <Col>HP: {this.state.p2HP}</Col>
+                <Col>SP: {this.state.p2SP}</Col>
               </Row>
               <Row>
                 <Col>
@@ -111,8 +141,8 @@ class PVC extends Component {
                   <h6>NAME: {this.state.p2AttackAbilityName}</h6>
                   DMG: {this.state.p2DMG} <br />
                   SP COST: {this.state.p2SPCost} <br />
-                  CTH: {this.state.p2CTH} <br />
-                  CC: {this.state.p2CC} <br />
+                  Chance To Hit: {this.state.p2CTH} <br />
+                  Critical Chance: {this.state.p2CC} <br />
                 </Col>
               </Row>
             </Col>
@@ -131,8 +161,8 @@ class PVC extends Component {
           <Row className="mt-5">
             <Col>
               <Row className="mb-3">
-                <Col>HP: {this.props.character1.hp}</Col>
-                <Col>SP: {this.props.character1.sp}</Col>
+                <Col>HP: {this.state.p1HP}</Col>
+                <Col>SP: {this.state.p1SP}</Col>
               </Row>
               <Row>
                 <Col>
@@ -144,8 +174,8 @@ class PVC extends Component {
                   <h6>NAME: {this.state.p1AttackAbilityName}</h6>
                   DMG: {this.state.p1DMG} <br />
                   SP COST: {this.state.p1SPCost} <br />
-                  CTH: {this.state.p1CTH} <br />
-                  CC: {this.state.p1CC} <br />
+                  Chance To Hit: {this.state.p1CTH} <br />
+                  Critical Chance: {this.state.p1CC} <br />
                 </Col>
               </Row>
             </Col>
