@@ -12,6 +12,18 @@ let initialState = {
   chest: '',
   legs: '',
   feet: '',
+  special1icon: null,
+  special1name: '',
+  special1dmg: '',
+  special1spcost: '',
+  special1cth: '',
+  special1cc: '',
+  special2icon: null,
+  special2name: '',
+  special2dmg: '',
+  special2spcost: '',
+  special2cth: '',
+  special2cc: '',
   selected: 0,
   confirmed: 0
 }

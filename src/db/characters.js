@@ -1,5 +1,9 @@
 import React from 'react';
-import { GiRunningNinja, GiArcher, GiPikeman, GiRead } from 'react-icons/gi';
+import { GiRunningNinja, GiStarShuriken, GiWhirlpoolShuriken } from 'react-icons/gi';
+import { GiArcher, GiArrowWings, GiAchillesHeel } from 'react-icons/gi';
+import { GiPikeman, GiPiercedBody, GiTrumpetFlag } from 'react-icons/gi';
+import { GiRead, GiFireSpellCast, GiFocusedLightning } from 'react-icons/gi';
+
 
 const characters = {
    Ninja: {
@@ -15,6 +19,18 @@ const characters = {
     chest: '',
     legs: '',
     feet: '',
+    special1icon: <GiStarShuriken />,
+    special1name: 'Shuriken',
+    special1dmg: 20,
+    special1spcost: 20,
+    special1cth: 3,
+    special1cc: .20,
+    special2icon: <GiWhirlpoolShuriken />,
+    special2name: 'Giant Shuriken',
+    special2dmg: 40,
+    special2spcost: 40,
+    special2cth: 5,
+    special2cc: .40,
     selected: 1
   },
   Archer: {
@@ -30,6 +46,18 @@ const characters = {
     chest: '',
     legs: '',
     feet: '',
+    special1icon: <GiArrowWings />,
+    special1name: 'Winged Arrow',
+    special1dmg: 20,
+    special1spcost: 20,
+    special1cth: 3,
+    special1cc: .20,
+    special2icon: <GiAchillesHeel />,
+    special2name: 'Achilles Heel Shot',
+    special2dmg: 40,
+    special2spcost: 40,
+    special2cth: 5,
+    special2cc: .40,
     selected: 1
   },
   Pikeman: {
@@ -45,6 +73,18 @@ const characters = {
     chest: '',
     legs: '',
     feet: '',
+    special1icon: <GiPiercedBody />,
+    special1name: 'Piercing Stab',
+    special1dmg: 20,
+    special1spcost: 20,
+    special1cth: 3,
+    special1cc: .20,
+    special2icon: <GiTrumpetFlag />,
+    special2name: 'Pikeman Call',
+    special2dmg: 40,
+    special2spcost: 40,
+    special2cth: 5,
+    special2cc: .40,
     selected: 1
   },
   Mage: {
@@ -60,6 +100,18 @@ const characters = {
     chest: '',
     legs: '',
     feet: '',
+    special1icon: <GiFireSpellCast />,
+    special1name: 'Fire Ball',
+    special1dmg: 20,
+    special1spcost: 20,
+    special1cth: 3,
+    special1cc: .20,
+    special2icon: <GiFocusedLightning />,
+    special2name: 'Focused Lightning',
+    special2dmg: 40,
+    special2spcost: 40,
+    special2cth: 5,
+    special2cc: .40,
     selected: 1
   }
 };
