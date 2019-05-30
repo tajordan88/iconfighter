@@ -62,6 +62,50 @@ class PVC extends Component {
     });
   }
 
+  onP1Special1Click = () => {
+    this.setState({
+      p1AttackAbilityName: this.props.character1.special1name,
+      p1DMG: this.props.character1.special1dmg,
+      p1SPCost: this.props.character1.special1spcost,
+      p1CTH: this.props.character1.special1cth,
+      p1CC: this.props.character1.special1cc,     
+      p1AttackSelected: true
+    });
+  }
+
+  onP2Special1Click = () => {
+    this.setState({
+      p2AttackAbilityName: this.props.character2.special1name,
+      p2DMG: this.props.character2.special1dmg,
+      p2SPCost: this.props.character2.special1spcost,
+      p2CTH: this.props.character2.special1cth,
+      p2CC: this.props.character2.special1cc,     
+      p2AttackSelected: true
+    });
+  }
+
+  onP1Special2Click = () => {
+    this.setState({
+      p1AttackAbilityName: this.props.character1.special2name,
+      p1DMG: this.props.character1.special2dmg,
+      p1SPCost: this.props.character1.special2spcost,
+      p1CTH: this.props.character1.special2cth,
+      p1CC: this.props.character1.special2cc,     
+      p1AttackSelected: true
+    });
+  } 
+
+  onP2Special2Click = () => {
+    this.setState({
+      p2AttackAbilityName: this.props.character2.special2name,
+      p2DMG: this.props.character2.special2dmg,
+      p2SPCost: this.props.character2.special2spcost,
+      p2CTH: this.props.character2.special2cth,
+      p2CC: this.props.character2.special2cc,     
+      p2AttackSelected: true
+    });
+  } 
+
   onDiceRollClick = () => {
     //roll dice
     //
@@ -69,10 +113,14 @@ class PVC extends Component {
     console.log(diceRoll);
     
     if (this.state.turn === 1) {
+      // SP adjusted for special ability used
+      let sp = this.state.p1SP - this.state.p1SPCost;
+      this.setState({ p1SP: sp });
+
       // Chance To Hit is determined by dice roll. Lower CTH = better hit chance. (1 is best)
       if (diceRoll >= this.state.p1CTH) {
         // Calculate how much damage to do.
-        let dmg = this.state.p2HP - (this.props.character1.atk + 50);
+        let dmg = this.state.p2HP - (this.state.p1DMG);
         // Set damage to do.
         this.setState({
           p2HP: dmg
@@ -87,10 +135,14 @@ class PVC extends Component {
     }
 
     if (this.state.turn === 2) {
+      // SP adjusted for special ability used
+      let sp = this.state.p2SP - this.state.p2SPCost;
+      this.setState({ p2SP: sp });
+
       // Chance To Hit is determined by dice roll. Lower CTH = better hit chance. (1 is best)
       if (diceRoll >= this.state.p2CTH) {
         // Calculate how much damage to do.
-        let dmg = this.state.p1HP - (this.props.character2.atk);
+        let dmg = this.state.p1HP - (this.state.p2DMG);
         // Set damage to do.
         this.setState({
           p1HP: dmg
@@ -132,8 +184,8 @@ class PVC extends Component {
           <Row className="mt-5">
             <Col>
               <button disabled={(this.state.turn === 1 || this.state.p2AttackConfirmed) ? true : false} onClick={this.onP2AttackClick}>ATTACK</button>
-              <button disabled={(this.state.turn === 1 || this.state.p2AttackConfirmed) ? true : false}>SPECIAL1</button>
-              <button disabled={(this.state.turn === 1 || this.state.p2AttackConfirmed) ? true : false}>SPECIAL2</button>
+              <button disabled={(this.state.turn === 1 || this.state.p2AttackConfirmed || this.state.p2SP - this.props.character2.special1spcost <= -1) ? true : false} onClick={this.onP2Special1Click}>SPECIAL1</button>
+              <button disabled={(this.state.turn === 1 || this.state.p2AttackConfirmed || this.state.p2SP - this.props.character2.special2spcost <= -1) ? true : false} onClick={this.onP2Special2Click}>SPECIAL2</button>
               <div className="mt-3">
                 <button disabled={(this.state.turn === 1 || !this.state.p2AttackSelected || this.state.p2AttackConfirmed) ? true : false} onClick={this.onP2ConfirmClick}>CONFIRM</button>
               </div>
@@ -154,7 +206,7 @@ class PVC extends Component {
                   DMG: {this.state.p2DMG} <br />
                   SP COST: {this.state.p2SPCost} <br />
                   Chance To Hit: {this.state.p2CTH} <br />
-                  Critical Chance: {this.state.p2CC} <br />
+                  Critical Chance: {this.state.p2CC}% <br />
                 </Col>
               </Row>
             </Col>
@@ -187,14 +239,14 @@ class PVC extends Component {
                   DMG: {this.state.p1DMG} <br />
                   SP COST: {this.state.p1SPCost} <br />
                   Chance To Hit: {this.state.p1CTH} <br />
-                  Critical Chance: {this.state.p1CC} <br />
+                  Critical Chance: {this.state.p1CC}% <br />
                 </Col>
               </Row>
             </Col>
             <Col>
               <button disabled={(this.state.turn === 2 || this.state.p1AttackConfirmed) ? true : false} onClick={this.onP1AttackClick}>ATTACK</button>
-              <button disabled={(this.state.turn === 2 || this.state.p1AttackConfirmed) ? true : false}>SPECIAL1</button>
-              <button disabled={(this.state.turn === 2 || this.state.p1AttackConfirmed) ? true : false}>SPECIAL2</button>
+              <button disabled={(this.state.turn === 2 || this.state.p1AttackConfirmed || this.state.p1SP - this.props.character1.special1spcost <= -1) ? true : false} onClick={this.onP1Special1Click}>SPECIAL1</button>
+              <button disabled={(this.state.turn === 2 || this.state.p1AttackConfirmed || this.state.p1SP - this.props.character1.special2spcost <= -1) ? true : false} onClick={this.onP1Special2Click}>SPECIAL2</button>
               <div className="mt-3">
                 <button disabled={(this.state.turn === 2 || !this.state.p1AttackSelected || this.state.p1AttackConfirmed) ? true : false} onClick={this.onP1ConfirmClick}>CONFIRM</button>
               </div>

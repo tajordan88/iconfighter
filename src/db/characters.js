@@ -24,13 +24,13 @@ const characters = {
     special1dmg: 20,
     special1spcost: 20,
     special1cth: 3,
-    special1cc: .20,
+    special1cc: 20,
     special2icon: <GiWhirlpoolShuriken />,
     special2name: 'Giant Shuriken',
     special2dmg: 40,
     special2spcost: 40,
     special2cth: 5,
-    special2cc: .40,
+    special2cc: 40,
     selected: 1
   },
   Archer: {
@@ -51,13 +51,13 @@ const characters = {
     special1dmg: 20,
     special1spcost: 20,
     special1cth: 3,
-    special1cc: .20,
+    special1cc: 20,
     special2icon: <GiAchillesHeel />,
     special2name: 'Achilles Heel Shot',
     special2dmg: 40,
     special2spcost: 40,
     special2cth: 5,
-    special2cc: .40,
+    special2cc: 40,
     selected: 1
   },
   Pikeman: {
@@ -78,13 +78,13 @@ const characters = {
     special1dmg: 20,
     special1spcost: 20,
     special1cth: 3,
-    special1cc: .20,
+    special1cc: 20,
     special2icon: <GiTrumpetFlag />,
     special2name: 'Pikeman Call',
     special2dmg: 40,
     special2spcost: 40,
     special2cth: 5,
-    special2cc: .40,
+    special2cc: 40,
     selected: 1
   },
   Mage: {
@@ -105,13 +105,13 @@ const characters = {
     special1dmg: 20,
     special1spcost: 20,
     special1cth: 3,
-    special1cc: .20,
+    special1cc: 20,
     special2icon: <GiFocusedLightning />,
     special2name: 'Focused Lightning',
     special2dmg: 40,
     special2spcost: 40,
     special2cth: 5,
-    special2cc: .40,
+    special2cc: 40,
     selected: 1
   }
 };
