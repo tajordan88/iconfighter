@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { Route } from 'react-router-dom';
 
 class PVC extends Component {
   state = {
@@ -72,7 +73,7 @@ class PVC extends Component {
       // Chance To Hit is determined by dice roll. Lower CTH = better hit chance. (1 is best)
       if (diceRoll >= this.state.p1CTH) {
         // Calculate how much damage to do.
-        let dmg = this.state.p2HP - (this.props.character1.atk);
+        let dmg = this.state.p2HP - (this.props.character1.atk + 50);
         // Set damage to do.
         this.setState({
           p2HP: dmg
@@ -102,17 +103,29 @@ class PVC extends Component {
         turn: 1,
         p1AttackConfirmed: false
        });
-    }    
-
+    }
 
     this.setState({
       attackConfirmed: false
     });
+
+
+  }
+
+  componentDidUpdate() {
+    // End Game Logic
+    if (this.state.p1HP <= 0) {
+      alert("Player 2 Wins!");
+      this.props.history.push('/PageGameSelect');
+    } else if (this.state.p2HP <= 0) {
+      alert("Player 1 Wins!")
+      this.props.history.push('/PageGameSelect');
+    }
   }
 
   render() {
     // console.log(this.props);
-    console.log(this.state);
+    console.log(this);
     return (
       <section id="PVC">
         <Container>
