@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { ReactComponent as Dice1 } from './images/dice1.svg';
+import { ReactComponent as Dice2 } from './images/dice2.svg';
+import { ReactComponent as Dice3 } from './images/dice3.svg';
+import { ReactComponent as Dice4 } from './images/dice4.svg';
+import { ReactComponent as Dice5 } from './images/dice5.svg';
+import { ReactComponent as Dice6 } from './images/dice6.svg';
 
 class PVC extends Component {
   state = {
@@ -23,7 +29,8 @@ class PVC extends Component {
     p2AttackSelected: false,
     p2AttackConfirmed: false,
     p2HP: this.props.character2.hp,
-    p2SP: this.props.character2.sp,    
+    p2SP: this.props.character2.sp,
+    diceRoll: 1
   }
 
   onP1ConfirmClick = () => {
@@ -110,7 +117,7 @@ class PVC extends Component {
     //roll dice
     //
     let diceRoll = Math.floor(Math.random() * 6 + 1);
-    console.log(diceRoll);
+    this.setState({ diceRoll: diceRoll });
     
     if (this.state.turn === 1) {
       // SP adjusted for special ability used
@@ -161,6 +168,26 @@ class PVC extends Component {
     });
 
 
+  }
+
+  updateDice = () => {
+    console.log("updateDice entered");
+    switch(this.state.diceRoll) {
+      case 1:
+        return <Dice1 width="100px" style={{marginLeft: "20px"}} />;
+      case 2:
+        return <Dice2 width="100px" style={{marginLeft: "20px"}} />;
+      case 3:
+        return <Dice3 width="100px" style={{marginLeft: "20px"}} />;
+      case 4:
+        return <Dice4 width="100px" style={{marginLeft: "20px"}} />;
+      case 5:
+        return <Dice5 width="100px" style={{marginLeft: "20px"}} />;
+      case 6:
+        return <Dice6 width="100px" style={{marginLeft: "20px"}} />;
+      default:
+        return <Dice1 width="100px" style={{marginLeft: "20px"}} />;
+    }
   }
 
   componentDidUpdate() {
@@ -216,7 +243,8 @@ class PVC extends Component {
 
           <Row className="mt-5">
             <Col>
-              <button disabled={(!this.state.attackConfirmed) ? true : false} onClick={this.onDiceRollClick}>DICE</button>
+              <button disabled={(!this.state.attackConfirmed) ? true : false} onClick={this.onDiceRollClick}>ROLL DICE</button>
+              {this.updateDice()}
             </Col>
           </Row>
 
