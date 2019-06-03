@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 import characters from '../../db/characters';
 
 class PageCharacterSelect extends Component {
+  state = {
+
+  }
+
   renderCharacterList() {
     // const characterList = characters.map(character => (
     //   <button key={character.name} onClick={() => this.props.onCharacterSelect1Click(character.name)}>
@@ -59,7 +63,16 @@ class PageCharacterSelect extends Component {
     return character;
   }
 
+  renderFightButton = () => {
+    console.log(this.props.character2.confirmed);
+    return this.props.character2.confirmed === 1 ?
+    <Link className="btn btn-danger" to={`/${this.props.gametype}`}>FIGHT!</Link>
+    :
+    <Link className="btn btn-danger" style={{pointerEvents: "none", opacity: ".5"}} to={`/${this.props.gametype}`} disabled>FIGHT!</Link>   
+  }
+
   render() {
+    console.log(this.props);
     return (
       <section>
         <Container>
@@ -74,9 +87,7 @@ class PageCharacterSelect extends Component {
           </Row>
           <Row>
             <Col>
-              <Link className="btn btn-danger" to={`/${this.props.gametype}`}>
-                FIGHT!
-              </Link>
+              {this.renderFightButton()}
             </Col>
           </Row>
         </Container>

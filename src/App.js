@@ -8,6 +8,7 @@ import PageStart from './components/PageStart/PageStart';
 import PageGameSelect from './components/PageGameSelect/PageGameSelectContainer';
 import PageCharacterSelect from './components/PageCharacterSelect/PageCharacterSelectContainer';
 import PVC from './components/PVC/PVCContainer';
+import PVP from './components/PVP/PVPContainer';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/PageGameSelect" component={PageGameSelect} />
         <Route path="/PageCharacterSelect" component={PageCharacterSelect} />
         <Route path="/PVC" component={PVC} />
+        <Route path="/PVP" component={PVP} />
       </div>
     </Router>
   );
