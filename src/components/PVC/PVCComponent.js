@@ -7,6 +7,8 @@ import { ReactComponent as Dice4 } from './images/dice4.svg';
 import { ReactComponent as Dice5 } from './images/dice5.svg';
 import { ReactComponent as Dice6 } from './images/dice6.svg';
 
+import './PVCComponent.css';
+
 class PVC extends Component {
   state = {
     turn: 1,
