@@ -32,7 +32,8 @@ class PVC extends Component {
     p2AttackConfirmed: false,
     p2HP: this.props.character2.hp,
     p2SP: this.props.character2.sp,
-    diceRoll: 1
+    diceRoll: 1,
+    hit: true
   }
 
   onP1ConfirmClick = () => {
@@ -132,10 +133,14 @@ class PVC extends Component {
         let dmg = this.state.p2HP - (this.state.p1DMG);
         // Set damage to do.
         this.setState({
-          p2HP: dmg
+          p2HP: dmg,
+          totalDMG: this.state.p1DMG,
+          hit: true
         })
       } else {
-        alert("You Missed!");
+        this.setState({
+          hit: false
+        })
       }
       this.setState({ 
         turn: 2,
@@ -154,10 +159,14 @@ class PVC extends Component {
         let dmg = this.state.p1HP - (this.state.p2DMG);
         // Set damage to do.
         this.setState({
-          p1HP: dmg
+          p1HP: dmg,
+          totalDMG: this.state.p2DMG,
+          hit: false
         })
       } else {
-        alert("You Missed!");
+        this.setState({
+          hit: false
+        })
       }
       this.setState({ 
         turn: 1,
@@ -190,6 +199,12 @@ class PVC extends Component {
       default:
         return <Dice1 width="100px" style={{marginLeft: "20px"}} />;
     }
+  }
+
+  renderHitMiss = () => {
+    return this.state.hit ? 
+    <span className="ml-4 text-success">Hit For {this.state.totalDMG}!</span>
+    : <span className="ml-4 text-danger">You Missed!</span>
   }
 
   componentDidUpdate() {
@@ -228,7 +243,7 @@ class PVC extends Component {
                 <Col>
                   <h6>Player 2</h6>
                   <h6>{this.props.character2.name}</h6>
-                  <h4>{this.props.character2.icon}</h4>
+                  <h4 style={{fontSize: "50px"}}>{this.props.character2.icon}</h4>
                 </Col>
                 <Col>
                   <h6>NAME: {this.state.p2AttackAbilityName}</h6>
@@ -247,6 +262,7 @@ class PVC extends Component {
             <Col>
               <button disabled={(!this.state.attackConfirmed) ? true : false} onClick={this.onDiceRollClick}>ROLL DICE</button>
               {this.updateDice()}
+              {this.renderHitMiss()}
             </Col>
           </Row>
 
@@ -262,7 +278,7 @@ class PVC extends Component {
                 <Col>
                   <h6>Player 1</h6>
                   <h6>{this.props.character1.name}</h6>
-                  <h4>{this.props.character1.icon}</h4>
+                  <h4 style={{fontSize: "50px"}}>{this.props.character1.icon}</h4>
                 </Col>
                 <Col>
                   <h6>NAME: {this.state.p1AttackAbilityName}</h6>
