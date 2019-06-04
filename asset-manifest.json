@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/iconfighter/static/css/main.851af5c6.chunk.css",
+    "main.js": "/iconfighter/static/js/main.f3d9976b.chunk.js",
+    "main.js.map": "/iconfighter/static/js/main.f3d9976b.chunk.js.map",
+    "runtime~main.js": "/iconfighter/static/js/runtime~main.fa999416.js",
+    "runtime~main.js.map": "/iconfighter/static/js/runtime~main.fa999416.js.map",
+    "static/js/2.3e85bf1d.chunk.js": "/iconfighter/static/js/2.3e85bf1d.chunk.js",
+    "static/js/2.3e85bf1d.chunk.js.map": "/iconfighter/static/js/2.3e85bf1d.chunk.js.map",
+    "index.html": "/iconfighter/index.html",
+    "precache-manifest.702a6c18f73f05b39de30e7d75d67243.js": "/iconfighter/precache-manifest.702a6c18f73f05b39de30e7d75d67243.js",
+    "service-worker.js": "/iconfighter/service-worker.js",
+    "static/css/main.851af5c6.chunk.css.map": "/iconfighter/static/css/main.851af5c6.chunk.css.map",
+    "static/media/dice1.a7149605.svg": "/iconfighter/static/media/dice1.a7149605.svg",
+    "static/media/dice2.894bdcd7.svg": "/iconfighter/static/media/dice2.894bdcd7.svg",
+    "static/media/dice3.b7f17b07.svg": "/iconfighter/static/media/dice3.b7f17b07.svg",
+    "static/media/dice4.65efac3c.svg": "/iconfighter/static/media/dice4.65efac3c.svg",
+    "static/media/dice5.7b74605e.svg": "/iconfighter/static/media/dice5.7b74605e.svg",
+    "static/media/dice6.1d8c26b4.svg": "/iconfighter/static/media/dice6.1d8c26b4.svg",
+    "static/media/logo.svg": "/iconfighter/static/media/logo.71a15972.svg"
+  }
+}
