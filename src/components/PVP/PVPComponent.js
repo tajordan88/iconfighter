@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import styled, {keyframes} from 'styled-components';
+import { bounce, fadeOutDown } from 'react-animations';
 import { ReactComponent as Dice1 } from './images/dice1.svg';
 import { ReactComponent as Dice2 } from './images/dice2.svg';
 import { ReactComponent as Dice3 } from './images/dice3.svg';
@@ -8,6 +10,9 @@ import { ReactComponent as Dice5 } from './images/dice5.svg';
 import { ReactComponent as Dice6 } from './images/dice6.svg';
 
 import './PVPComponent.css';
+
+const Bounce = styled.div`animation: 2s ${keyframes`${bounce}`} infinite`;
+const FadeOutDown = styled.div`animation: 1s ${keyframes`${fadeOutDown}`}`;
 
 class PVP extends Component {
   state = {
@@ -33,7 +38,8 @@ class PVP extends Component {
     p2HP: this.props.character2.hp,
     p2SP: this.props.character2.sp,
     diceRoll: 1,
-    hit: true
+    hit: true,
+    animationTrigger: 1
   }
 
   onP1ConfirmClick = () => {
@@ -135,11 +141,13 @@ class PVP extends Component {
         this.setState({
           p2HP: dmg,
           totalDMG: this.state.p1DMG,
-          hit: true
+          hit: true,
+          animationTrigger: 1
         })
       } else {
         this.setState({
-          hit: false
+          hit: false,
+          animationTrigger: 1
         })
       }
       this.setState({ 
@@ -161,11 +169,13 @@ class PVP extends Component {
         this.setState({
           p1HP: dmg,
           totalDMG: this.state.p2DMG,
-          hit: false
+          hit: false,
+          animationTrigger: 2
         })
       } else {
         this.setState({
-          hit: false
+          hit: false,
+          animationTrigger: 2
         })
       }
       this.setState({ 
@@ -182,7 +192,6 @@ class PVP extends Component {
   }
 
   updateDice = () => {
-    console.log("updateDice entered");
     switch(this.state.diceRoll) {
       case 1:
         return <Dice1 width="100px" style={{marginLeft: "20px"}} />;
@@ -206,6 +215,16 @@ class PVP extends Component {
     <span className="ml-4 text-success">Hit For {this.state.totalDMG}!</span>
     : <span className="ml-4 text-danger">You Missed!</span>
   }
+  
+  // renderp2Hit = () => {
+  //   if (this.state.animationTrigger === 1) {
+  //     this.setState({animationTrigger: 0})
+  //     return <FadeOutDown>{this.state.p2HP}</FadeOutDown>
+  //   } else if (this.state.animationTrigger === 0) {
+  //     return <FadeOutDown>{this.state.p2HP}</FadeOutDown>
+  //   }
+  //   // return <FadeOutDown>{this.state.p2HP}</FadeOutDown>
+  // }
 
   componentDidUpdate() {
     // End Game Logic
