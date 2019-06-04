@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "648c1849d46125699516f4d9d27c95f4",
+    "revision": "177a28b73049e6cf3d335d7f7b1d435b",
     "url": "/iconfighter/index.html"
   },
   {
-    "revision": "6064938c32f7ff45c536",
+    "revision": "a9fb601449bf7bd65c34",
     "url": "/iconfighter/static/css/main.851af5c6.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/iconfighter/static/js/2.3e85bf1d.chunk.js"
   },
   {
-    "revision": "6064938c32f7ff45c536",
-    "url": "/iconfighter/static/js/main.f3d9976b.chunk.js"
+    "revision": "a9fb601449bf7bd65c34",
+    "url": "/iconfighter/static/js/main.c40da5e9.chunk.js"
   },
   {
     "revision": "a2c1fd913badae01f442",
